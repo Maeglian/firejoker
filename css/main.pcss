@@ -1,0 +1,133 @@
+body {
+  padding-top: 15px;
+  font-family: 'Work Sans', sans-serif;
+  background-image: url('./../img/bg_fire.png');
+  background-position: center center;
+  background-size: cover;
+  //background: linear-gradient(to bottom, #ffde3b, #ffa81e 40%, #ff6f01 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+.Wrapper {
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 55%;
+  overflow: hidden;
+}
+
+.Title {
+  width: 37.96296296296%;
+  margin: 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+
+  &-Image {
+    position: relative;
+    display: inline-block;
+    width: 75.41463414634%;
+    z-index: 1;
+  }
+
+  &-Text {
+    display: inline-block;
+    padding: 10px 25px;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+
+  &-Spin {
+    position: relative;
+    font-size: 4vw;
+    color: #fff;
+    background-color: #de2b00;
+    transform: rotate(-1deg);
+    z-index: 2;
+  }
+
+  &-Win {
+    position: relative;
+    font-size: 3.3vw;
+    color: #000;
+    background-color: #fff;
+    transform: rotate(1deg);
+    z-index: 1;
+  }
+}
+
+.Spin {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 70%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  &-Spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+  .&-Sector {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    float: left;
+    background-color: blue;
+    opacity: 0;
+  }
+
+  .&-Sector--one {
+    top: 0;
+    left: 0;
+    background-color: yellow;
+    border-top-left-radius: 100%;
+  }
+
+  .&-Sector--two {
+    top: 0;
+    left: 50%;
+    background-color: red;
+    border-top-right-radius: 100%;
+  }
+
+  .&-Sector--three {
+    top: 50%;
+    left: 0;
+    background-color: blue;
+    border-bottom-left-radius: 100%;
+  }
+
+  .&-Sector--four {
+    top: 50%;
+    left: 50%;
+    background-color: greenyellow;
+    border-bottom-right-radius: 100%;
+  }
+}
+
+.anime {
+  transition: all 5s cubic-bezier(10, .99, .44, 6.99);
+  animation: spin 1.25s infinite linear forwards;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
