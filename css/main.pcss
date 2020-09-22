@@ -209,15 +209,17 @@ img {
   }
 
   &-Content {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    top: 100px;
     width: 33%;
-    margin: 100px auto 0;
     background-color: #fff;
     background-image: url('./../img/pattern.png');
     background-size: 102% 45%;
     background-repeat: no-repeat;
     background-position: 0 bottom;
     border-radius: 12px;
+    transform: translateX(-50%);
 
     @media (max-width: 1248px) {
       width: 40%;
@@ -233,6 +235,11 @@ img {
 
     @media (max-width: 540px) {
       width: 80%;
+    }
+
+    @media (max-width: 460px) {
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 
