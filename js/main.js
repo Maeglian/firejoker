@@ -2,7 +2,7 @@ $(function () {
   const circle = $('.Spin-Circle');
   const modal = $('.Modal');
   const prize = $('.Modal-Prize');
-  const results = ['1250$', '25 Spins', '100$', '155 Spins'];
+  const results = ['1250$ Bonus', '25 Spins', '100$ Bonus', '155 Spins'];
   let timer, result;
 
   circle.addClass('anime').css('animationPlayState', 'paused');
@@ -10,6 +10,7 @@ $(function () {
   $(document).on('click', function(event) {
     if ($(event.target).closest($('.Modal-Content')).length) return;
     circle.css('transform', 'initial');
+    $(document.body).css('overflow', 'auto');
     modal.fadeOut();
     event.stopPropagation();
   });
@@ -22,16 +23,17 @@ $(function () {
       timer = setTimeout(function () {
         circle.css('animationPlayState', 'paused');
         const angle = getRotationDegree(circle);
-        console.log(angle);
 
-        if (angle > 45 && angle <= 135) result = results[1];
-        else if (angle > 135 && angle <= 225) result = results[2];
-        else if (angle > 225 && angle <= 315) result = results[3];
+        if (angle >= 45 && angle <= 135) result = results[1];
+        else if (angle > 135 && angle < 225) result = results[2];
+        else if (angle >= 225 && angle < 314) result = results[3];
         else result = results[0];
-        console.log(result);
 
         prize.text(result);
-        setTimeout(() => { modal.fadeIn(); }, 1000);
+        setTimeout(() => {
+          $(document.body).css('overflow', 'hidden');
+          modal.fadeIn();
+        }, 1000);
       }, rTime);
     }
   });
