@@ -1,67 +1,54 @@
 $(function () {
   const circle = $('.Spin-Circle');
-  let timer;
+  const modal = $('.Modal');
+  const prize = $('.Modal-Prize');
+  const results = ['1250$', '25 Spins', '100$', '155 Spins'];
+  let timer, result;
 
   circle.addClass('anime').css('animationPlayState', 'paused');
 
+  $(document).on('click', function(event) {
+    if ($(event.target).closest($('.Modal-Content')).length) return;
+    circle.css('transform', 'initial');
+    modal.fadeOut();
+    event.stopPropagation();
+  });
+
   $('.Spin-Spinner').on('click', function () {
     const rTime = Math.floor(Math.random() * 5001) + 1000;
+    console.log(rTime);
     if (circle.css('animationPlayState') === 'paused') {
       circle.css('animationPlayState', 'running');
-      // timer = setTimeout(function () {
-      //   circle.css('animationPlayState', 'paused');
-      //
-      //   var findDivOne = document.getElementById( 'one' ),
-      //     findDivTwo = document.getElementById( 'two' ),
-      //     findDivThree = document.getElementById( 'three' ),
-      //     findDivFour = document.getElementById( 'four' );
-      //
-      //   function getOffsetRect(elem) {
-      //     // (1)
-      //     var box = elem.getBoundingClientRect()
-      //
-      //     // (2)
-      //     var body = document.body;
-      //     var docElem = document.documentElement;
-      //
-      //     // (3)
-      //     var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
-      //     var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
-      //
-      //     // (4)
-      //     var clientTop = docElem.clientTop || body.clientTop || 0;
-      //     var clientLeft = docElem.clientLeft || body.clientLeft || 0;
-      //
-      //     // (5)
-      //     var top  = box.top +  scrollTop - clientTop;
-      //     var left = box.left + scrollLeft - clientLeft;
-      //
-      //     return { top: Math.round(top), left: Math.round(left) }
-      //   };
-      //
-      //   var resultDivOne = getOffsetRect(findDivOne).top,
-      //     resultDivTwo = getOffsetRect(findDivTwo).top,
-      //     resultDivThree = getOffsetRect(findDivThree).top,
-      //     resultDivFour = getOffsetRect(findDivFour).top;
-      //
-      //   document.getElementById( 'result' ).innerHTML = '1: '+resultDivOne+'|| 2: '+resultDivTwo+'|| 3: '+resultDivThree+'|| 4: '+resultDivFour;
-      //   if (resultDivOne <= 99 & resultDivOne >= 40) {
-      //     document.getElementById( 'result' ).innerHTML = 'Зелёный';
-      //   }
-      //   if (resultDivTwo <= 99 & resultDivTwo >= 40) {
-      //     document.getElementById( 'result' ).innerHTML = 'Синий';
-      //   }
-      //   if (resultDivThree <= 99 & resultDivThree >= 40) {
-      //     document.getElementById( 'result' ).innerHTML = 'Красный';
-      //   }
-      //   if (resultDivFour <= 99 & resultDivFour >= 40) {
-      //     document.getElementById( 'result' ).innerHTML = 'Желтый';
-      //   }
-      //
-      //   if ((resultDivOne === 100 & resultDivTwo === 100) || (resultDivTwo === 100 & resultDivFour) || (resultDivThree === 100 & resultDivOne) || (resultDivFour === 100 & resultDivThree) || (resultDivFour === 100 & resultDivTwo === 100)) {
-      //     document.getElementById( 'result' ).innerHTML = 'Ничья :D';
-      //   }
-      // }, rTime);
-    } else circle.css('animationPlayState', 'paused');
+      timer = setTimeout(function () {
+        circle.css('animationPlayState', 'paused');
+        const angle = getRotationDegree(circle);
+        console.log(angle);
+
+        if (angle > 45 && angle <= 135) result = results[1];
+        else if (angle > 135 && angle <= 225) result = results[2];
+        else if (angle > 225 && angle <= 315) result = results[3];
+        else result = results[0];
+        console.log(result);
+
+        prize.text(result);
+        setTimeout(() => { modal.fadeIn(); }, 1000);
+      }, rTime);
+    }
   });
+
+  function getRotationDegree(elem) {
+    const matrix = elem.css('transform');
+    let angle;
+
+    if (matrix !== 'none') {
+      const values = matrix.split('(')[1].split(')')[0].split(',');
+      const a = values[0];
+      const b = values[1];
+      angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+    } else angle = 0;
+
+    if (angle < 0) angle += 360;
+
+    return angle;
+  }
 });
