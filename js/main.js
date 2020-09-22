@@ -10,7 +10,7 @@ $(function () {
   $(document).on('click', function(event) {
     if ($(event.target).closest($('.Modal-Content')).length) return;
     circle.css('transform', 'initial');
-    $(document.body).css('overflow', 'auto');
+    $(document.body).css('overflow', '');
     modal.fadeOut();
     event.stopPropagation();
   });
