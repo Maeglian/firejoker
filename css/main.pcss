@@ -11,6 +11,11 @@ body {
     background-size: 260% auto;
     background-position: center top;
   }
+
+  @media (max-width: 360px) {
+    background-size: 290% auto;
+    background-position: center top;
+  }
 }
 
 * {
@@ -27,7 +32,7 @@ img {
   min-height: 100vh;
   margin: 0 auto;
   padding-bottom: 55%;
-  overflow: hidden;
+  overflow: hidden !important;
 
   @media (max-width: 1024px) {
     padding-bottom: 54%;
@@ -128,6 +133,7 @@ img {
 
   @media (max-width: 360px) {
     margin-top: 65%;
+    width: 160%;
   }
 
   &-Spinner {
