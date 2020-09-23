@@ -143,9 +143,14 @@ img {
     width: 25%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    transition: filter 0.2s ease;
+
+    &--active {
+      filter: drop-shadow(10px 0 10px rgba(0,0,0,0.9));
+    }
   }
 
-  .&-Sector {
+  &-Sector {
     position: absolute;
     width: 50%;
     height: 50%;
@@ -154,28 +159,28 @@ img {
     opacity: 0;
   }
 
-  .&-Sector--one {
+  &-Sector--one {
     top: 0;
     left: 0;
     background-color: yellow;
     border-top-left-radius: 100%;
   }
 
-  .&-Sector--two {
+  &-Sector--two {
     top: 0;
     left: 50%;
     background-color: red;
     border-top-right-radius: 100%;
   }
 
-  .&-Sector--three {
+  &-Sector--three {
     top: 50%;
     left: 0;
     background-color: blue;
     border-bottom-left-radius: 100%;
   }
 
-  .&-Sector--four {
+  &-Sector--four {
     top: 50%;
     left: 50%;
     background-color: greenyellow;
@@ -218,6 +223,7 @@ img {
     position: absolute;
     left: 50%;
     top: 100px;
+    z-index: 1;
     width: 33%;
     background-color: #fff;
     background-image: url('./../img/pattern.png');
@@ -351,6 +357,10 @@ img {
     cursor: pointer;
     white-space: nowrap;
 
+    &:hover {
+      background: linear-gradient(to right, #fc664d, #fd3b1f);
+    }
+
     @media (max-width: 960px) {
       font-size: 3.7vw;
     }
@@ -363,6 +373,4 @@ img {
       font-size: 6.7vw;
     }
   }
-
-
 }
