@@ -146,59 +146,13 @@ img {
     transition: filter 0.2s ease;
 
     &--active {
-      filter: drop-shadow(10px 0 10px rgba(0,0,0,0.9));
+      filter: drop-shadow(10px 0 4px rgba(0,0,0,0.7));
     }
   }
 
-  &-Sector {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    float: left;
-    background-color: blue;
-    opacity: 0;
-  }
-
-  &-Sector--one {
-    top: 0;
-    left: 0;
-    background-color: yellow;
-    border-top-left-radius: 100%;
-  }
-
-  &-Sector--two {
-    top: 0;
-    left: 50%;
-    background-color: red;
-    border-top-right-radius: 100%;
-  }
-
-  &-Sector--three {
-    top: 50%;
-    left: 0;
-    background-color: blue;
-    border-bottom-left-radius: 100%;
-  }
-
-  &-Sector--four {
-    top: 50%;
-    left: 50%;
-    background-color: greenyellow;
-    border-bottom-right-radius: 100%;
-  }
-}
-
-.anime {
-  transition: all 5s cubic-bezier(10, .99, .44, 6.99);
-  animation: spin 1.25s infinite linear forwards;
-}
-
-@keyframes spin {
-  from {
-    transform:rotate(0deg);
-  }
-  to {
-    transform:rotate(360deg);
+  &-Circle {
+    transition: transform 6s cubic-bezier(0.3, 1, 0.7, 1);
+    will-change: transform;
   }
 }
 
