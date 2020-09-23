@@ -2,6 +2,9 @@ $(function () {
   const circle = $('.Spin-Circle');
   const modal = $('.Modal');
   const prize = $('.Modal-Prize');
+  const spinner = $('.Spin-Spinner');
+  const link = $('.Modal-Link');
+  const confetti = $('.Modal-Confetti');
   const results = ['1250$ Bonus', '25 Spins', '100$ Bonus', '155 Spins'];
   let timer, result;
 
@@ -15,21 +18,25 @@ $(function () {
     event.stopPropagation();
   });
 
+  link.on('mouseover', () => { confetti.show(); });
+  link.on('mouseout', () => { confetti.hide(); });
+
   $('.Spin-Spinner').on('click', function () {
     const rTime = Math.floor(Math.random() * 5001) + 1000;
-    console.log(rTime);
     if (circle.css('animationPlayState') === 'paused') {
+      spinner.addClass('Spin-Spinner--active');
       circle.css('animationPlayState', 'running');
       timer = setTimeout(function () {
         circle.css('animationPlayState', 'paused');
         const angle = getRotationDegree(circle);
-
+        console.log(angle);
         if (angle >= 45 && angle <= 135) result = results[1];
         else if (angle > 135 && angle < 225) result = results[2];
         else if (angle >= 225 && angle < 314) result = results[3];
         else result = results[0];
 
         prize.text(result);
+        spinner.removeClass('Spin-Spinner--active');
         setTimeout(() => {
           $(document.body).css('overflow', 'hidden');
           modal.fadeIn();
