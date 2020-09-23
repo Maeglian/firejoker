@@ -31,11 +31,11 @@ img {
   min-width: 320px;
   min-height: 100vh;
   margin: 0 auto;
-  padding-bottom: 55%;
+  padding-bottom: 45%;
   overflow: hidden !important;
 
   @media (max-width: 1024px) {
-    padding-bottom: 54%;
+    padding-bottom: 47%;
   }
 
   @media (max-width: 960px) {
@@ -44,7 +44,7 @@ img {
 }
 
 .Title {
-  width: 37.96296296296%;
+  width: 27.96296296296%;
   margin: 0 auto;
   text-transform: uppercase;
   text-align: center;
@@ -57,7 +57,8 @@ img {
     position: relative;
     display: inline-block;
     width: 75.41463414634%;
-    z-index: 1;
+    margin-bottom: -10px;
+    z-index: 3;
   }
 
   &-Text {
@@ -71,7 +72,7 @@ img {
 
   &-Spin {
     position: relative;
-    font-size: 4vw;
+    font-size: 3vw;
     color: #fff;
     background-color: #de2b00;
     transform: rotate(-1deg);
@@ -88,7 +89,7 @@ img {
 
   &-Win {
     position: relative;
-    font-size: 3.3vw;
+    font-size: 2.3vw;
     color: #000;
     background-color: #fff;
     transform: rotate(1deg);
@@ -108,14 +109,14 @@ img {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 70%;
-  margin-top: 23%;
+  width: 60%;
+  margin-top: 17%;
   transform: translateX(-50%);
   border-radius: 50%;
   overflow: hidden;
 
   @media (max-width: 1024px) {
-    margin-top: 25%;
+    margin-top: 19%;
   }
 
   @media (max-width: 960px) {
